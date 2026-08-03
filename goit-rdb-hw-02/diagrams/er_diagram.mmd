@@ -1,0 +1,40 @@
+erDiagram
+    categories ||--o{ products : "має"
+    customers  ||--o{ orders : "робить"
+    orders     ||--o{ order_details : "містить"
+    products   ||--o{ order_details : "входить у"
+
+    categories {
+        int         id PK
+        varchar     name
+        varchar     description
+    }
+
+    customers {
+        int         id PK
+        varchar     name
+        varchar     contact
+        varchar     address
+        varchar     city
+        varchar     country
+    }
+
+    products {
+        int         id PK
+        varchar     name
+        decimal     price
+        int         category_id FK
+    }
+
+    orders {
+        int         id PK
+        date        order_date
+        int         customer_id FK
+    }
+
+    order_details {
+        int         id PK
+        int         order_id FK
+        int         product_id FK
+        int         quantity
+    }
